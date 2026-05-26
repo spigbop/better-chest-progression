@@ -9,29 +9,23 @@ import net.spigbop.bcp.BetterChestProgression;
 import net.spigbop.bcp.progression.KeyMaterial;
 
 public class ModItems {
-    protected static final DeferredRegister.Items ITEMS =
-        DeferredRegister.createItems(
-            BetterChestProgression.MODID
-        );
+    protected static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(
+        BetterChestProgression.MODID);
 
     public static final DeferredItem<KeyItem> BLACKSMITH_KEY = ITEMS.register(
-        "blacksmith_key",
-        () -> new KeyItem(
-            new Item.Properties().durability(4)
-                                 .setNoRepair()
-                                 .stacksTo(1),
+        "blacksmith_key", () -> new KeyItem(
+            new Item.Properties().durability(4).setNoRepair().stacksTo(1),
             KeyMaterial.BLACKSMITH
         )
     );
     public static final DeferredItem<KeyItem> ENDER_KEY = ITEMS.register(
-        "ender_key",
-        () -> new KeyItem(
-            new Item.Properties().durability(16)
-                                 .setNoRepair()
-                                 .stacksTo(1)
-                                 .rarity(Rarity.EPIC)
-                                 .fireResistant(),
-            KeyMaterial.ENDER
+        "ender_key", () -> new KeyItem(
+            new Item.Properties()
+                .durability(16)
+                .setNoRepair()
+                .stacksTo(1)
+                .rarity(Rarity.EPIC)
+                .fireResistant(), KeyMaterial.ENDER
         )
     );
 

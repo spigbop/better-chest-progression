@@ -6,14 +6,23 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 
 public enum KeyMaterial {
-    BLACKSMITH("blacksmith", () -> Component.translatable(
-        "block.bcp.blacksmith_treasure_chest").withStyle(ChatFormatting.WHITE)),
-    ENDER("end_city", () -> Component.translatable("block.bcp" +
-                    ".end_city_treasure_chest")
-                         .withStyle(ChatFormatting.LIGHT_PURPLE)),
-    ANY(null,
-        () -> Component.translatable("block.bcp.any_treasure_chest")
-                       .withStyle(ChatFormatting.LIGHT_PURPLE),
+    BLACKSMITH(
+        "blacksmith",
+        () -> Component
+            .translatable("block.bcp.blacksmith_treasure_chest")
+            .withStyle(ChatFormatting.WHITE)
+    ),
+    ENDER(
+        "end_city",
+        () -> Component
+            .translatable("block.bcp" + ".end_city_treasure_chest")
+            .withStyle(ChatFormatting.LIGHT_PURPLE)
+    ),
+    ANY(
+        null,
+        () -> Component
+            .translatable("block.bcp.any_treasure_chest")
+            .withStyle(ChatFormatting.LIGHT_PURPLE),
         ENDER,
         BLACKSMITH
     );
@@ -22,15 +31,21 @@ public enum KeyMaterial {
     private final Supplier<Component> chestName;
     private final List<KeyMaterial> includes;
 
-    KeyMaterial(String chestTextureName, Supplier<Component> chestName,
-                List<KeyMaterial> includes) {
+    KeyMaterial(
+        String chestTextureName,
+        Supplier<Component> chestName,
+        List<KeyMaterial> includes
+    ) {
         this.chestTextureName = chestTextureName;
         this.chestName = chestName;
         this.includes = includes;
     }
 
-    KeyMaterial(String chestTextureName, Supplier<Component> chestName,
-                KeyMaterial... includes) {
+    KeyMaterial(
+        String chestTextureName,
+        Supplier<Component> chestName,
+        KeyMaterial... includes
+    ) {
         this(chestTextureName, chestName, List.of(includes));
     }
 

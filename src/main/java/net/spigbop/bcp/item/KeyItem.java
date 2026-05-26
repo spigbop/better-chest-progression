@@ -35,12 +35,11 @@ public class KeyItem extends Item {
         List<Component> tooltipComponents,
         TooltipFlag tf
     ) {
-        tooltipComponents.add(Component.translatable(
-                                           "item.bcp.tooltip.key",
-                                           this.getMaterial()
-                                               .translateChestName()
-                                       )
-                                       .withStyle(ChatFormatting.GRAY));
+        tooltipComponents.add(Component
+            .translatable("item.bcp.tooltip.key",
+                this.getMaterial().translateChestName()
+            )
+            .withStyle(ChatFormatting.GRAY));
 
         super.appendHoverText(s, c, tooltipComponents, tf);
     }

@@ -10,7 +10,7 @@ import net.spigbop.bcp.block.ModBlocks;
 
 public class ModBlockEntityTypes {
     protected static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPES = DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE,
-                                                                                                             BetterChestProgression.MODID
+        BetterChestProgression.MODID
     );
 
     public static void register(IEventBus bus) {

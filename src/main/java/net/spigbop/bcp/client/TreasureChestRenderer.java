@@ -9,7 +9,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.state.properties.ChestType;
 import net.spigbop.bcp.BetterChestProgression;
 import net.spigbop.bcp.block.entity.TreasureChestBlockEntity;
-import net.spigbop.bcp.progression.KeyMaterial;
 import org.jetbrains.annotations.NotNull;
 
 public class TreasureChestRenderer
@@ -21,7 +20,6 @@ public class TreasureChestRenderer
         super(context);
     }
 
-
     @ParametersAreNonnullByDefault
     @NotNull
     @Override
@@ -30,11 +28,10 @@ public class TreasureChestRenderer
         ChestType chestType
     ) {
         return new Material(
-            Sheets.CHEST_SHEET,
-            ResourceLocation.fromNamespaceAndPath(
-                BetterChestProgression.MODID,
-                "entity/chest/" + blockEntity.getMaterial().getChestTextureName()
-            )
+            Sheets.CHEST_SHEET, ResourceLocation.fromNamespaceAndPath(
+            BetterChestProgression.MODID,
+            "entity/chest/" + blockEntity.getMaterial().getChestTextureName()
+        )
         );
     }
 }

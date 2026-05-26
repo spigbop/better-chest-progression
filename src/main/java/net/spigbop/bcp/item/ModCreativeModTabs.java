@@ -12,25 +12,20 @@ import net.spigbop.bcp.BetterChestProgression;
 import net.spigbop.bcp.block.ModBlocks;
 
 public class ModCreativeModTabs {
-    protected static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
-        DeferredRegister.create(
-            BuiltInRegistries.CREATIVE_MODE_TAB,
-            BetterChestProgression.MODID
-        );
+    protected static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(BuiltInRegistries.CREATIVE_MODE_TAB,
+        BetterChestProgression.MODID
+    );
 
-    public static final Supplier<CreativeModeTab> CREATIVE_MODE_TAB =
-        CREATIVE_MODE_TABS.register(
+    public static final Supplier<CreativeModeTab> CREATIVE_MODE_TAB = CREATIVE_MODE_TABS.register(
         BetterChestProgression.MODNAME,
-        () -> CreativeModeTab.builder()
+        () -> CreativeModeTab
+            .builder()
             .title(Component.translatable("itemGroup.bcp"))
             .icon(() -> new ItemStack(
                 ModBlocks.END_CITY_TREASURE_CHEST_ITEM.get(),
                 1
             ))
-            .displayItems(List.of(
-                ModItems.BLACKSMITH_KEY,
-                ModItems.ENDER_KEY
-            ))
+            .displayItems(List.of(ModItems.BLACKSMITH_KEY, ModItems.ENDER_KEY))
             .build()
     );
 

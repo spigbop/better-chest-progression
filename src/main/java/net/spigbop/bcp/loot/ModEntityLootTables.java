@@ -7,6 +7,8 @@ import net.minecraft.world.level.storage.loot.LootTable;
 import net.spigbop.bcp.BetterChestProgression;
 
 public class ModEntityLootTables {
+    public static final ResourceKey<LootTable> BLACKSMITH_KEY = create(
+        "blacksmith_key");
     public static final ResourceKey<LootTable> ENDER_DRAGON = create(
         "ender_dragon");
 

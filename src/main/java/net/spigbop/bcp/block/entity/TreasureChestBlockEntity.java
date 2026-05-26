@@ -5,7 +5,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.spigbop.bcp.block.TreasureChestBlock;
@@ -15,10 +14,7 @@ import org.jetbrains.annotations.NotNull;
 public class TreasureChestBlockEntity extends ChestBlockEntity {
     private boolean unlocked = false;
 
-    public TreasureChestBlockEntity(
-        BlockPos pos,
-        BlockState blockState
-    ) {
+    public TreasureChestBlockEntity(BlockPos pos, BlockState blockState) {
         super(ModBlockEntityTypes.TREASURE_CHEST.get(), pos, blockState);
     }
 

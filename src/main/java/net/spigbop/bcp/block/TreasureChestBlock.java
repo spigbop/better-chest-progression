@@ -119,27 +119,6 @@ public class TreasureChestBlock
     );
 
     public final MapCodec<TreasureChestBlock> mapCodec;
-    private final KeyMaterial unlockMaterial;
-
-    public TreasureChestBlock(
-        Properties properties,
-        Supplier<BlockEntityType<? extends TreasureChestBlockEntity>> blockEntityType,
-        KeyMaterial unlockMaterial
-    ) {
-        super(properties, blockEntityType);
-        this.unlockMaterial = unlockMaterial;
-        this.mapCodec = simpleCodec((p) -> new TreasureChestBlock(
-            p,
-            ModBlockEntityTypes.TREASURE_CHEST::get,
-            unlockMaterial
-        ));
-
-        registerDefaultState(this.getStateDefinition()
-                                 .any()
-                                 .setValue(FACING, Direction.NORTH)
-                                 .setValue(TYPE, ChestType.SINGLE)
-                                 .setValue(WATERLOGGED, false));
-    }
 
     @ParametersAreNonnullByDefault
     public static DoubleBlockCombiner.Combiner<TreasureChestBlockEntity, Float2FloatFunction> opennessCombiner(
@@ -180,8 +159,9 @@ public class TreasureChestBlock
         BlockPos pos
     ) {
         BlockPos blockpos = pos.above();
-        return level.getBlockState(blockpos)
-                    .isRedstoneConductor(level, blockpos);
+        return level
+            .getBlockState(blockpos)
+            .isRedstoneConductor(level, blockpos);
     }
 
     private static boolean isCatSittingOnChest(
@@ -207,42 +187,6 @@ public class TreasureChestBlock
         }
 
         return false;
-    }
-
-    private static void failUse(Player player, Level level, BlockPos pos) {
-        if (player != null) {
-            level.playSound(
-                null,
-                pos,
-                SoundEvents.CHEST_LOCKED,
-                SoundSource.BLOCKS
-            );
-            player.displayClientMessage(
-                Component.translatable("block.bcp.chest_needs_key"), true);
-        }
-    }
-
-    private static void unlock(
-        Player player,
-        Level level,
-        BlockPos pos,
-        ItemStack item,
-        InteractionHand hand,
-        TreasureChestBlockEntity entity
-    ) {
-        if (player != null) {
-            level.playSound(
-                null,
-                pos,
-                SoundEvents.CHEST_LOCKED,
-                SoundSource.BLOCKS
-            );
-            item.hurtAndBreak(
-                1,
-                player,
-                LivingEntity.getSlotForHand(hand));
-        }
-        entity.unlock();
     }
 
     @Override
@@ -316,8 +260,9 @@ public class TreasureChestBlock
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         ChestType chesttype = ChestType.SINGLE;
         Direction direction = context.getHorizontalDirection().getOpposite();
-        FluidState fluidstate = context.getLevel()
-                                       .getFluidState(context.getClickedPos());
+        FluidState fluidstate = context
+            .getLevel()
+            .getFluidState(context.getClickedPos());
         boolean flag = context.isSecondaryUseActive();
         Direction direction1 = context.getClickedFace();
         if (direction1.getAxis().isHorizontal() && flag) {
@@ -330,8 +275,8 @@ public class TreasureChestBlock
                 direction = direction2;
                 chesttype = direction2.getCounterClockWise() ==
                             direction1.getOpposite()
-                                ? ChestType.RIGHT
-                                : ChestType.LEFT;
+                    ? ChestType.RIGHT
+                    : ChestType.LEFT;
             }
         }
 
@@ -351,10 +296,11 @@ public class TreasureChestBlock
             }
         }
 
-        return this.defaultBlockState()
-                   .setValue(FACING, direction)
-                   .setValue(TYPE, chesttype)
-                   .setValue(WATERLOGGED, fluidstate.getType() == Fluids.WATER);
+        return this
+            .defaultBlockState()
+            .setValue(FACING, direction)
+            .setValue(TYPE, chesttype)
+            .setValue(WATERLOGGED, fluidstate.getType() == Fluids.WATER);
     }
 
     @Nullable
@@ -362,19 +308,19 @@ public class TreasureChestBlock
         BlockPlaceContext context,
         Direction direction
     ) {
-        BlockState blockstate = context.getLevel()
-                                       .getBlockState(context.getClickedPos()
-                                                             .relative(direction));
+        BlockState blockstate = context
+            .getLevel()
+            .getBlockState(context.getClickedPos().relative(direction));
         return blockstate.is(this) &&
                blockstate.getValue(TYPE) == ChestType.SINGLE
-                   ? blockstate.getValue(FACING)
-                   : null;
+            ? blockstate.getValue(FACING)
+            : null;
     }
 
     protected @NotNull FluidState getFluidState(BlockState state) {
         return state.getValue(WATERLOGGED)
-                   ? Fluids.WATER.getSource(false)
-                   : super.getFluidState(state);
+            ? Fluids.WATER.getSource(false)
+            : super.getFluidState(state);
     }
 
     protected Stat<ResourceLocation> getOpenChestStat() {
@@ -393,8 +339,7 @@ public class TreasureChestBlock
     @ParametersAreNonnullByDefault
     @NotNull
     @Override
-    public DoubleBlockCombiner.NeighborCombineResult<?
-            extends TreasureChestBlockEntity> combine(
+    public DoubleBlockCombiner.NeighborCombineResult<? extends TreasureChestBlockEntity> combine(
         BlockState blockState,
         Level level,
         BlockPos blockPos,
@@ -424,18 +369,14 @@ public class TreasureChestBlock
     protected @NotNull BlockState rotate(BlockState state, Rotation rotation) {
         return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
     }
-    //endregion
 
     @SuppressWarnings("deprecation")
     protected @NotNull BlockState mirror(BlockState state, Mirror mirror) {
         BlockState rotated = state.rotate(mirror.getRotation(state.getValue(
             FACING)));
         return mirror == Mirror.NONE
-                   ? rotated
-                   : rotated.setValue(
-                       TYPE,
-                       rotated.getValue(TYPE).getOpposite()
-                   );
+            ? rotated
+            : rotated.setValue(TYPE, rotated.getValue(TYPE).getOpposite());
     }
 
     @ParametersAreNonnullByDefault
@@ -467,9 +408,66 @@ public class TreasureChestBlock
     ) {
         return new TreasureChestBlockEntity(blockPos, blockState);
     }
+    //endregion
+
+    private final KeyMaterial unlockMaterial;
+
+    public TreasureChestBlock(
+        Properties properties,
+        Supplier<BlockEntityType<? extends TreasureChestBlockEntity>> blockEntityType,
+        KeyMaterial unlockMaterial
+    ) {
+        super(properties, blockEntityType);
+        this.unlockMaterial = unlockMaterial;
+        this.mapCodec = simpleCodec((p) -> new TreasureChestBlock(
+            p,
+            ModBlockEntityTypes.TREASURE_CHEST::get,
+            unlockMaterial
+        ));
+
+        registerDefaultState(this
+            .getStateDefinition()
+            .any()
+            .setValue(FACING, Direction.NORTH)
+            .setValue(TYPE, ChestType.SINGLE)
+            .setValue(WATERLOGGED, false));
+    }
 
     public boolean canBeUnlockedBy(KeyItem item) {
         return item.getMaterial().canSubsideFor(this.getUnlockMaterial());
+    }
+
+    private static void failUse(Player player, Level level, BlockPos pos) {
+        if (player != null) {
+            level.playSound(
+                null,
+                pos,
+                SoundEvents.CHEST_LOCKED,
+                SoundSource.BLOCKS
+            );
+            player.displayClientMessage(
+                Component.translatable("block.bcp.chest_needs_key"), true);
+        }
+    }
+
+    private static void unlock(
+        Player player,
+        Level level,
+        BlockPos pos,
+        ItemStack item,
+        InteractionHand hand,
+        TreasureChestBlockEntity entity
+    ) {
+        if (player != null) {
+            level.playSound(
+                null,
+                pos,
+                SoundEvents.CHEST_LOCKED,
+                SoundSource.BLOCKS
+            );
+            item.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
+        }
+        entity.unlock();
     }
 
     private void open(
@@ -505,10 +503,9 @@ public class TreasureChestBlock
             return ItemInteractionResult.SUCCESS;
         }
 
-        TreasureChestBlockEntity entity = level.getBlockEntity(
-            pos,
-            ModBlockEntityTypes.TREASURE_CHEST.get()
-        ).orElse(null);
+        TreasureChestBlockEntity entity = level
+            .getBlockEntity(pos, ModBlockEntityTypes.TREASURE_CHEST.get())
+            .orElse(null);
 
         if (entity != null) {
             if (entity.isLocked()) {
@@ -540,10 +537,9 @@ public class TreasureChestBlock
             return InteractionResult.SUCCESS;
         }
 
-        TreasureChestBlockEntity entity = level.getBlockEntity(
-            pos,
-            ModBlockEntityTypes.TREASURE_CHEST.get()
-        ).orElse(null);
+        TreasureChestBlockEntity entity = level
+            .getBlockEntity(pos, ModBlockEntityTypes.TREASURE_CHEST.get())
+            .orElse(null);
         if (entity != null) {
             if (entity.isLocked()) {
                 failUse(player, level, pos);
@@ -564,10 +560,9 @@ public class TreasureChestBlock
         BlockState newState,
         boolean isMoving
     ) {
-        TreasureChestBlockEntity entity = level.getBlockEntity(
-            pos,
-            ModBlockEntityTypes.TREASURE_CHEST.get()
-        ).orElse(null);
+        TreasureChestBlockEntity entity = level
+            .getBlockEntity(pos, ModBlockEntityTypes.TREASURE_CHEST.get())
+            .orElse(null);
         if (entity == null || entity.isUnlocked()) {
             Containers.dropContentsOnDestroy(state, newState, level, pos);
         }
