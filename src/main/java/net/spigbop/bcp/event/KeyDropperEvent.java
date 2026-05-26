@@ -48,22 +48,19 @@ public class KeyDropperEvent {
             .reloadableRegistries()
             .getLootTable(ModEntityLootTables.BLACKSMITH_KEY);
 
-        BetterChestProgression.LOGGER.info("mixing blacksmith key loot table");
-
-        table.getRandomItems(params).forEach(itemStack -> {
-            drops.add(new ItemEntity(
+        table
+            .getRandomItems(params)
+            .forEach(itemStack -> drops.add(new ItemEntity(
                 level,
                 entity.getX(),
                 entity.getY(),
                 entity.getZ(),
                 itemStack
-            ));
-        });
+            )));
     }
 
     @SubscribeEvent
     public static void onLivingDrops(LivingDropsEvent event) {
-        BetterChestProgression.LOGGER.info("some guy is dropping drops");
         LivingEntity entity = event.getEntity();
 
         if (entity.level().isClientSide) {

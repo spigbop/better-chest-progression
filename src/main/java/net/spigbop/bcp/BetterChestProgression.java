@@ -16,7 +16,7 @@ public class BetterChestProgression {
     public static final String MODNAME = "better_chest_progression";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public BetterChestProgression(IEventBus bus, ModContainer modContainer) {
+    public BetterChestProgression(IEventBus bus, ModContainer _c) {
         ModItems.register(bus);
         ModBlocks.register(bus);
         ModBlockEntityTypes.register(bus);
