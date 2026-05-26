@@ -1,0 +1,11 @@
+{
+  "itemGroup.bcp": "Better Chest Progression",
+  "item.bcp.tooltip.key": "Can unlock %s.",
+  "item.bcp.blacksmith_key": "Blacksmith's Key",
+  "item.bcp.ender_key": "Ender Key",
+  "block.bcp.chest_needs_key": "This chest is locked, it needs a key to unlock.",
+  "container.bcp.treasure_chest": "Treasure Chest",
+  "block.bcp.blacksmith_treasure_chest": "Village Blacksmith Treasure Chest",
+  "block.bcp.end_city_treasure_chest": "End City Treasure Chest",
+  "block.bcp.any_treasure_chest": "Any Treasure Chest"
+}
