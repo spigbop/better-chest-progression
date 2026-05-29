@@ -4,6 +4,7 @@
   "item.bcp.blacksmith_key": "Blacksmith's Key",
   "item.bcp.star_key": "Star Key",
   "item.bcp.ender_key": "Ender Key",
+  "item.bcp.creative_mode_key": "Creative Mode Key",
   "block.bcp.chest_needs_key": "This chest is locked, it needs a key to unlock.",
   "container.bcp.treasure_chest": "Treasure Chest",
   "block.bcp.blacksmith_treasure_chest": "Village Blacksmith Treasure Chest",

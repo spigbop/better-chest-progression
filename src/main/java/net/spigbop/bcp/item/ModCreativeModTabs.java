@@ -28,7 +28,9 @@ public class ModCreativeModTabs {
             .displayItems(List.of(
                 ModItems.BLACKSMITH_KEY,
                 ModItems.STAR_KEY,
-                ModItems.ENDER_KEY))
+                ModItems.ENDER_KEY,
+                ModItems.CREATIVE_MODE_KEY
+            ))
             .build()
     );
 

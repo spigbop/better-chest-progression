@@ -30,6 +30,7 @@ public enum KeyMaterial {
             .translatable("block.bcp.any_treasure_chest")
             .withStyle(ChatFormatting.LIGHT_PURPLE),
         ENDER,
+        ANCIENT,
         BLACKSMITH
     );
 

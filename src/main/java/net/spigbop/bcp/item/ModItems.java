@@ -10,7 +10,8 @@ import net.spigbop.bcp.progression.KeyMaterial;
 
 public class ModItems {
     protected static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(
-        BetterChestProgression.MODID);
+        BetterChestProgression.MODID
+    );
 
     public static final DeferredItem<KeyItem> BLACKSMITH_KEY = ITEMS.register(
         "blacksmith_key", () -> new KeyItem(
@@ -24,7 +25,7 @@ public class ModItems {
                 .durability(16)
                 .setNoRepair()
                 .stacksTo(1)
-                .rarity(Rarity.EPIC)
+                .rarity(Rarity.RARE)
                 .fireResistant(), KeyMaterial.ANCIENT
         )
     );
@@ -36,6 +37,17 @@ public class ModItems {
                 .stacksTo(1)
                 .rarity(Rarity.EPIC)
                 .fireResistant(), KeyMaterial.ENDER
+        )
+    );
+    public static final DeferredItem<KeyItem> CREATIVE_MODE_KEY =
+        ITEMS.register(
+        "creative_mode_key", () -> new KeyItem(
+            new Item.Properties()
+                .durability(8192)
+                .setNoRepair()
+                .stacksTo(1)
+                .rarity(Rarity.EPIC)
+                .fireResistant(), KeyMaterial.ANY
         )
     );
 
