@@ -1,6 +1,7 @@
 {
   "replace": false,
   "entries": [
+    "bcp:add_end_city_mending",
     "bcp:add_end_city_progression",
     "bcp:add_ender_dragon"
   ]

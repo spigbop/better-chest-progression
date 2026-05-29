@@ -8,7 +8,14 @@ import net.spigbop.bcp.BetterChestProgression;
 
 public class ModChestLootTables {
     public static final ResourceKey<LootTable> END_CITY = create(
-        "end_city_progression");
+        "end_city_progression"
+    );
+    public static final ResourceKey<LootTable> MENDING_BOOK = create(
+        "mending_book"
+    );
+    public static final ResourceKey<LootTable> MENDING_BOOK_COMMON = create(
+        "mending_book_common"
+    );
 
     public static ResourceKey<LootTable> create(String name) {
         return ResourceKey.create(

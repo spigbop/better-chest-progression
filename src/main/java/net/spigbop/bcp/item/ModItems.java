@@ -18,10 +18,20 @@ public class ModItems {
             KeyMaterial.BLACKSMITH
         )
     );
+    public static final DeferredItem<KeyItem> STAR_KEY = ITEMS.register(
+        "star_key", () -> new KeyItem(
+            new Item.Properties()
+                .durability(16)
+                .setNoRepair()
+                .stacksTo(1)
+                .rarity(Rarity.EPIC)
+                .fireResistant(), KeyMaterial.ANCIENT
+        )
+    );
     public static final DeferredItem<KeyItem> ENDER_KEY = ITEMS.register(
         "ender_key", () -> new KeyItem(
             new Item.Properties()
-                .durability(16)
+                .durability(128)
                 .setNoRepair()
                 .stacksTo(1)
                 .rarity(Rarity.EPIC)

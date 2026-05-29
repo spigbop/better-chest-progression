@@ -8,9 +8,11 @@ import net.spigbop.bcp.BetterChestProgression;
 
 public class ModEntityLootTables {
     public static final ResourceKey<LootTable> BLACKSMITH_KEY = create(
-        "blacksmith_key");
+        "blacksmith_key"
+    );
     public static final ResourceKey<LootTable> ENDER_DRAGON = create(
-        "ender_dragon");
+        "ender_dragon"
+    );
 
     public static ResourceKey<LootTable> create(String name) {
         return ResourceKey.create(

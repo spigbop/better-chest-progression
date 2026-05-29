@@ -12,10 +12,16 @@ public enum KeyMaterial {
             .translatable("block.bcp.blacksmith_treasure_chest")
             .withStyle(ChatFormatting.WHITE)
     ),
+    ANCIENT(
+        "ancient_city",
+        () -> Component
+            .translatable("block.bcp.ancient_city_treasure_chest")
+            .withStyle(ChatFormatting.DARK_BLUE)
+    ),
     ENDER(
         "end_city",
         () -> Component
-            .translatable("block.bcp" + ".end_city_treasure_chest")
+            .translatable("block.bcp.end_city_treasure_chest")
             .withStyle(ChatFormatting.LIGHT_PURPLE)
     ),
     ANY(

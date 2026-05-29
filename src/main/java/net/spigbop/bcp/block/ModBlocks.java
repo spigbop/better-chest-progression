@@ -28,6 +28,18 @@ public class ModBlocks {
             KeyMaterial.BLACKSMITH
         )
     );
+    public static final DeferredBlock<TreasureChestBlock> ANCIENT_CITY_TREASURE_CHEST = BLOCKS.register(
+        "ancient_city_treasure_chest", () -> new TreasureChestBlock(
+            BlockBehaviour.Properties
+                .of()
+                .mapColor(MapColor.COLOR_PURPLE)
+                .instrument(NoteBlockInstrument.BASEDRUM)
+                .requiresCorrectToolForDrops()
+                .strength(1.5F, 6.0F),
+            ModBlockEntityTypes.TREASURE_CHEST::get,
+            KeyMaterial.ANCIENT
+        )
+    );
     public static final DeferredBlock<TreasureChestBlock> END_CITY_TREASURE_CHEST = BLOCKS.register(
         "end_city_treasure_chest", () -> new TreasureChestBlock(
             BlockBehaviour.Properties
@@ -46,6 +58,8 @@ public class ModBlocks {
 
     public static final DeferredItem<BlockItem> BLACKSMITH_TREASURE_CHEST_ITEM = ITEMS.registerSimpleBlockItem(
         BLACKSMITH_TREASURE_CHEST);
+    public static final DeferredItem<BlockItem> ANCIENT_CITY_TREASURE_CHEST_ITEM = ITEMS.registerSimpleBlockItem(
+        ANCIENT_CITY_TREASURE_CHEST);
     public static final DeferredItem<BlockItem> END_CITY_TREASURE_CHEST_ITEM = ITEMS.registerSimpleBlockItem(
         END_CITY_TREASURE_CHEST);
 

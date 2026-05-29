@@ -25,7 +25,10 @@ public class ModCreativeModTabs {
                 ModBlocks.END_CITY_TREASURE_CHEST_ITEM.get(),
                 1
             ))
-            .displayItems(List.of(ModItems.BLACKSMITH_KEY, ModItems.ENDER_KEY))
+            .displayItems(List.of(
+                ModItems.BLACKSMITH_KEY,
+                ModItems.STAR_KEY,
+                ModItems.ENDER_KEY))
             .build()
     );
 

@@ -35,7 +35,7 @@ public class ModLootModifiers extends GlobalLootModifierProvider {
         );
     }
 
-    private ResourceKey<LootTable> vanilla(String path) {
+    private ResourceKey<LootTable> getVanillaKey(String path) {
         return ResourceKey.create(
             Registries.LOOT_TABLE,
             ResourceLocation.withDefaultNamespace(path)
@@ -44,6 +44,20 @@ public class ModLootModifiers extends GlobalLootModifierProvider {
 
     @Override
     protected void start() {
+        this.add(
+            "add_ancient_city_mending",
+            this.addModifier(
+                BuiltInLootTables.ANCIENT_CITY,
+                ModChestLootTables.MENDING_BOOK
+            )
+        );
+        this.add(
+            "add_end_city_mending",
+            this.addModifier(
+                BuiltInLootTables.END_CITY_TREASURE,
+                ModChestLootTables.MENDING_BOOK_COMMON
+            )
+        );
         this.add(
             "add_end_city_progression",
             this.addModifier(
@@ -54,7 +68,7 @@ public class ModLootModifiers extends GlobalLootModifierProvider {
         this.add(
             "add_ender_dragon",
             this.addModifier(
-                vanilla("entities/ender_dragon"),
+                getVanillaKey("entities/ender_dragon"),
                 ModEntityLootTables.ENDER_DRAGON
             )
         );

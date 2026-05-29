@@ -21,6 +21,7 @@ public class ModBlockEntityTypes {
         "treasure_chest", () -> BlockEntityType.Builder.of(
             TreasureChestBlockEntity::new,
             ModBlocks.BLACKSMITH_TREASURE_CHEST.get(),
+            ModBlocks.ANCIENT_CITY_TREASURE_CHEST.get(),
             ModBlocks.END_CITY_TREASURE_CHEST.get()
         ).build(null)
     );

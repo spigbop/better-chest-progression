@@ -1,0 +1,7 @@
+{
+  "parent": "bcp:block/treasure_chest",
+  "textures": {
+    "material": "bcp:entity/chest/ancient_city",
+    "particle": "minecraft:block/smooth_basalt"
+  }
+}
