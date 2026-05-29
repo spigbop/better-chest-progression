@@ -41,4 +41,4 @@ Please report issues to the [Issues page on GitHub](https://github.com/spigbop/b
 
 ## Check Out My Other Content
 
-<p align="center" style="text-align: center">[<img src="https://cdn.modrinth.com/data/RUsJvpdQ/3fb403d03839f40f13c3faf3a8afc579dbd4a4e5.png" alt="Multitools Enhanced" style="width: 96px" />](https://modrinth.com/mod/multitool-enhanced)</p>
+<p align="center" style="text-align: center"><a href="https://modrinth.com/mod/multitool-enhanced"><img src="https://cdn.modrinth.com/data/RUsJvpdQ/3fb403d03839f40f13c3faf3a8afc579dbd4a4e5.png" alt="Multitools Enhanced" style="width: 96px" /></a></p>
